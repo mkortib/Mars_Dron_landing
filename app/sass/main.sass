@@ -1,0 +1,558 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+// ::placeholder
+// 	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $default-font
+	overflow-x: hidden
+	color: $text
+	input, textarea
+		// border: #666 1px solid
+		// outline: none
+		// &:focus:required:invalid
+		// 	border-color: red
+		// &:required:valid
+		// 	border-color: green
+	&.ishome
+		.site-header
+			// min-height: 700px
+			height: 100vh
+			background-color: $dark
+			color: #fff
+			.top-line
+				padding-top: 40px
+				position: absolute
+				width: 100%
+				z-index: 1
+
+.h1, .h2, .h3, .h4, .h5, .h6
+	text-transform: uppercase
+	line-height: 1.4
+
+.text-center
+	text-align: center
+
+@mixin opacity($opacity)
+	opacity: $opacity / 100
+	filter: alpha(opacity=$opacity)
+
+.preloader
+	position: fixed
+	top: 0
+	left: 0
+	bottom: 0
+	right: 0
+	z-index: 100
+	background-color: $dark
+	.pulse
+		position: relative
+		left: 50%
+		top: 50vh
+		margin:
+			left: -40px
+			top: -40px
+		&::before, &::after
+			content: ''
+			border: 5px solid #323232
+			width: 80px
+			height: 80px
+			border-radius: 500px
+			position: absolute
+		&::before
+			animation: pulse-outer .8s ease-in infinite
+		&::after
+			animation: pulse-inner .8s linear infinite
+
+
+@keyframes pulse-outer
+	0%
+		@include opacity(100)
+	50%
+		@include opacity(50)
+	50%
+		@include opacity(0)
+
+@keyframes pulse-inner
+	0%
+		@include opacity(0)
+		transform: scale(0)
+	50%
+		@include opacity(100)
+		transform: scale(1)
+
+.logo
+	img
+		width: 125px
+		height: auto
+		margin-left: 40px
+
+
+.button
+	display: inline-block
+	border: none
+	color: #fff
+	text-decoration: none
+	background-color: $accent
+	padding: 16px 45px
+	font-size: 13px
+	text-transform: uppercase
+	font-weight: 600
+	letter-spacing: 3px
+	border-radius: 2px
+	text-align: center
+	position: relative
+	outline: none
+	transition: background-color .1s ease
+	cursor: pointer
+	&::after
+		transition: background-color .2s ease
+		position: absolute
+		content: ''
+		height: 4px
+		bottom: 0
+		width: 100%
+		background-color: darken($accent, 50%)
+		opacity: .18
+		border-bottom-left-radius: 2px
+		border-bottom-right-radius: 2px
+		left: 0
+	&:focus, &:hover
+		text-decoration: none
+		color: #fff
+	&:hover
+		background-color: lighten($accent, 5%)
+		&::after
+			opacity: .22
+	&:active
+		background-color: darken($accent, 5%)
+		&::after
+			opacity: .32
+
+
+.site_header
+	background-color: #eff1f6
+	padding: 60px 0 
+	position: relative
+	// min-height: 700px
+	height: 100vh	
+	&::after
+		content: ''
+		position: absolute
+		width: 40%
+		height: 100%
+		background-color: $accent
+		top: 0
+		z-index: 2
+		right: 0
+	// &::before
+	// 	content: 'mars'
+	// 	position: absolute
+	// 	z-index: 4
+	// 	top: 50px
+	// 	right: 0
+	// 	font-size: 218px
+	// 	font-weight: bold
+	// 	text-transform: uppercase
+	// 	transform: rotate(90deg)
+
+.top_line
+	z-index: 20
+	width: 100%
+	position: relative
+	.phone_wrap, .logo_wrap
+		display: inline-block
+	.phone_wrap
+		position: relative
+		top: -3px
+		margin-left: 80px
+		font-size: 14px
+		color: #92a1a5
+		p
+			text-align: center
+		.fas
+			margin-right: 10px
+			font-size: 12px
+
+.logo_wrap
+	display: inline-block
+	position: relative
+	font-weight: bold
+	font-size: 24px
+	.circle_logo
+		top: 0
+		right: -10px
+		position: absolute
+		width: 10px
+		height: 10px
+		border: 3px solid $accent
+		border-radius: 50%
+
+.buy_wr, .hamburger
+	display: inline-block
+	position: absolute
+	z-index: 3
+	right: 0
+	color: #fff
+
+.buy_wr
+	top: 0
+	z-index: 11
+	margin-right: 100px
+	font-weight: bold
+	font-size: 16px
+
+.hamburger
+	z-index: 99999999
+	padding: 0
+	// position: fixed
+	// right: 0
+	// top: 34px
+	.hamburger-box
+		width: 30px
+.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before
+	border-radius: 0
+	width: 30px
+	background-color: #fff
+	height: 2px
+.hamburger--emphatic .hamburger-inner:after
+	top: 6px
+
+// .hamburger--emphatic.is-active .hamburger-inner, .hamburger-inner:before, .hamburger-inner:after 
+// 	width: 20px
+
+.hamburger-inner:before
+	top: -6px
+
+.mars_bg
+	position: absolute
+	right: 0
+	z-index: 10
+	top: -5%
+	bottom: 0
+	img
+		width: 270px
+		height: 115%
+
+.header_content
+	position: absolute
+	top: 45%
+	// left: 12%
+	h1
+		font-size: 60px
+		font-weight: bold
+	.title_descr
+		line-height: 30px
+		font-size: 14px
+		color: #92a1a5
+
+.product_title
+	position: absolute
+	left: 40%
+	top: 20%
+	z-index: 20
+	img
+		width: 80%
+		height: auto
+
+.schroll_title
+	position: absolute
+	font-size: 15px
+	font-weight: bold
+	left: 0
+	letter-spacing: 1px
+	transform: rotate(-90deg)
+	bottom: 10%
+
+.arrow
+	padding: 10px
+	cursor: pointer
+	position: absolute
+	bottom: 7%
+	font-size: 30px
+	color: #fff
+	right: 3%
+	z-index: 40
+
+.s_second
+	padding: 15% 0
+	position: relative
+	&::after
+		z-index: 1
+		content: ''
+		background-image: url(/img/s2_bg2.png)
+		position: absolute
+		height: 100%
+		top: 0
+		left: 0
+		bottom: 0
+		width: 35%
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+	&::before
+		content: ''
+		background-image: url(/img/s2_bg.png)
+		position: absolute
+		height: 100%
+		top: 0
+		bottom: 0
+		right: 0
+		width: 65%
+		background-repeat: no-repeat
+		background-position: center center
+		background-size: cover
+
+.sec_content
+	position: relative
+	z-index: 89
+	color: #fff
+	.r_comp
+		h1
+			color: #000
+			font-weight: bold
+			font-size: 45px
+			text-transform: none
+			margin-left: 40px
+		p
+			color: #92a1a5
+			font-size: 14px
+			margin-left: 45px
+	.l_comp
+		h1
+			text-transform: none
+			font-size: 45px
+			font-weight: bold
+	&::after
+		content: ''
+		position: absolute
+		width: 80%
+		height: 100%
+
+.view
+	transform: rotate(-90deg)
+	float: right
+	margin-top: 20%
+	a
+		color: #000
+		text-transform: uppercase
+		padding: 10px 20px
+		background-color: #fff
+		border-radius: 22px
+		font-size: 16px
+		font-weight: bold
+		transition: all .5s ease
+		&:hover, &:focus
+			text-decoration: none
+			color: #eff2f6
+			background-color: $accent
+
+.s_features
+	padding: 5% 0
+
+	.items
+		margin-top: 80px
+	h1
+		text-align: center
+		text-transform: none
+		font-size: 45px
+	.item
+		text-align: center
+		img
+			width: 60px
+			height: 60px
+		h4
+			line-height: 25px
+			font-size: 20px
+			margin-top: 20px
+			margin-bottom: 40px
+
+.s_gener
+	overflow: hidden
+	background-color: #232323
+	padding: 15% 0
+	position: relative
+	img
+		position: absolute
+		z-index: 5
+		top: 10%
+		right: -11%
+		height: 80%	
+		// width: 200px
+	&::after
+		content: ''
+		position: absolute
+		width: 45%
+		height: 100%
+		background-image: url(/img/gener_bg.png)
+		top: 0
+		left: 0
+		bottom: 0
+		background-size: cover
+		background-position: center
+
+.gener_content
+	position: absolute
+	z-index: 8
+	right: 10%
+	top: 25%
+	width: 40%
+	h1
+		color: #fff
+		font-size: 57px
+		line-height: 75px
+		font-weight: normal
+		margin-bottom: 30px
+	a
+		color: #fff
+		padding: 10px 15px
+		border: 1px solid #3b3b3b
+		border-radius: 20px
+		text-transform: uppercase
+		font-weight: bold
+		letter-spacing: 1px
+		font-size: 14px
+		transition: all .5s ease
+		&:hover, &:focus
+			text-decoration: none
+		&:hover
+			border-color: $accent
+			color: $accent
+.red_text
+	color: $accent
+
+.s_fly
+	overflow: hidden
+	padding: 15% 0
+	position: relative
+	img
+		position: absolute
+		width: 50%
+		// height: 100%
+		right: -100px
+		top: 140px
+
+.fly_title
+	h1
+		font-size: 58px
+		letter-spacing: 2px
+		line-height: 70px
+	a
+		display: inline-block
+		margin-top: 20px
+		text-transform: uppercase
+		font-size: 16px
+		border: 1px solid darken(#eff2f6, 5%)
+		border-radius: 20px
+		color: #000
+		font-weight: 600
+		padding: 10px 25px
+		cursor: pointer
+		transition: all .5s ease
+		letter-spacing: 1px
+		&:hover, &:focus
+			background-color: $accent
+			color: #fff
+			text-decoration: none
+
+.s_jorney
+	background-position: center
+	background-size: cover
+	padding: 40% 0 15% 
+	text-align: center
+	h1
+		color: #fff
+		font-weight: bold
+		font-size: 60px
+	a
+		display: inline-block
+		margin-top: 20px
+		padding: 10px 20px
+		font-weight: bold
+		color: #318f76
+		background-color: #fff
+		text-transform: uppercase
+		border-radius: 20px
+		font-size: 14px
+		transition: all .5s ease
+		&:hover, &:focus
+			text-decoration: none
+			font-size: 16px
+
+.main_foot
+	padding: 15% 0
+	background-position: center center
+	background-repeat: no-repeat
+	background-size: contain
+	text-align: center
+	p
+		font-weight: 500
+		margin-top: 15px
+		color: #92a1a5
+		font-size: 16px
+
+.mnu-active
+	display: none
+
+.hidden_menu
+	display: none
+	position: absolute
+	width: 100%
+	height: 100%
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0	
+	background-color: rgba(#000, .9)
+	z-index: 99
+	.mnu_wrap
+		white-space: nowrap
+		position: fixed
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		ul
+			list-style-type: none
+			text-align: center
+			li
+				margin-top: 30px
+				a
+					letter-spacing: 2px
+					color: #fff
+					font-size: 40px
+					text-transform: uppercase
+					font-weight: bold
+					transition: all .5s ease
+					&:hover, &:focus
+						padding-left: 20px
+						// color: $accent
+						text-decoration: none
+						transform: scale(1.1)
+						border-left: 5px solid $accent
+
+.close
+	position: fixed
+	right: 120px
+	top: 50px
+	color: #fff
+	z-index: 200
+	font-size: 70px
+	cursor: pointer
+	transition: all .5s ease
+	&:hover
+		transform: rotate(90deg)
+		color: $accent
+		// background-color: #fff
+
+
+@import "media" // Always at the end
